@@ -4,6 +4,8 @@
  */
 package ejerciciosmatrices;
 
+import java.util.Arrays;
+
 /**
  *
  * @author pabmar
@@ -13,27 +15,41 @@ public class Ejercicio04 {
         int orden = 5;
         int[][] matriz = new int[orden][orden];
         
-        int contador = 1;
         
 //        Generar en cuadrado Latino de orden N. (Un cuadrado Latino de orden N es una matriz cuadrada en la que la primera fila contiene los N
 //        primeros números naturales, en orden, y cada una de las siguientes filas contiene la rotación de la fila anterior un lugar a la derecha.
         
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j] = orden + (i+j);
+                if (i == 0) {
+                    matriz[i][j] = j + 1;
+                } else {
+                    if (j == 0) {
+                        matriz[i][j] = matriz[i-1][matriz[i].length - 1];
+                    } else {
+                        matriz[i][j] = matriz[i-1][j-1];
+                    }
+                }
+                
+//                System.out.print(matriz[i][j]+" \t");
             }
+//            System.out.println();
         }
         
         
         //        Toda la matriz
         System.out.println("Toda la matriz: ");
-        for (int x = 0; x < matriz.length; x++) {
-            for (int y = 0; y < matriz[x].length; y++) {
-                System.out.print(" | ");
-                System.out.print(matriz[x][y]);
-                System.out.print(" | ");
-            }
-            System.out.println();
+//        for (int[] matriz1 : matriz) {
+//            for (int y = 0; y < matriz1.length; y++) {
+//                System.out.print(" | ");
+//                System.out.print(matriz1[y]);
+//                System.out.print(" | ");
+//            }
+//            System.out.println();
+//        }
+        
+        for (int i = 0; i < matriz.length; i++) {
+            System.out.println(Arrays.toString(matriz[i]));
         }
         
     }
